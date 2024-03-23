@@ -9,13 +9,33 @@
 	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [4321, 35729]
+	"forwardPorts": [4321, 35729],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "yarn install",
 
 	// Configure tool-specific properties.
-	// "customizations": {},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"mhutchie.git-graph",
+				"SonarSource.sonarlint-vscode"
+			],
+			"settings": {
+				// Configure glob patterns for excluding files and folders in the file explorer.
+				"files.exclude": {
+					"**/.git": true,
+					"**/.DS_Store": true,
+					"**/bower_components": true,
+					"**/coverage": true,
+					"**/jest-output": true,
+					"**/lib-amd": true,
+					"src/**/*.scss.ts": true
+				},
+				"typescript.tsdk": "node_modules/typescript/lib"
+			}
+		}
+	}
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
