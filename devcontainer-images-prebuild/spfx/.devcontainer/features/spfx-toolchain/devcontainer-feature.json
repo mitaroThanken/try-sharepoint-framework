@@ -2,9 +2,5 @@
     "$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainerFeature.schema.json",
     "id": "spfx-toolchain",
     "version": "1.0.0",
-    "name": "SharePoint Framework toolchain",
-    "postStartCommand": {
-        "mkdir .rushstack": "mkdir -p ${containerWorkspaceFolder}/.rushstack",
-        "link .rushstack": "rm /home/node/.rushstack; ln -s ${containerWorkspaceFolder}/.rushstack /home/node/.rushstack"
-    }
+    "name": "SharePoint Framework toolchain"
 }
