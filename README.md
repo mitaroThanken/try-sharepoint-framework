@@ -19,7 +19,17 @@ Short summary on functionality and used technologies.
 
 ## Prerequisites
 
-> Any special pre-requisites?
+### Install the developer certificate
+
+1. Copy `.rushstack/minica.crt` to workspace root directory.
+
+    ```bash
+    cp .rushstack/minica.crt /workspaces/try-sharepoint-framework
+    ```
+
+1. Install `minica.crt` as root certificate.
+
+1. Remove `/workspaces/try-sharepoint-framework/minica.crt` .
 
 ## Solution
 

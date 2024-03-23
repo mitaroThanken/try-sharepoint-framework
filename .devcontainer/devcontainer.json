@@ -3,13 +3,13 @@
 {
 	"name": "SPFx",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "ghcr.io/mitarothanken/try-sharepoint-framework/devcontainers/spfx:20240323-1545"
+	"image": "ghcr.io/mitarothanken/try-sharepoint-framework/devcontainers/spfx:20240323-1545",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	"forwardPorts": [4321, 35729]
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "yarn install",
