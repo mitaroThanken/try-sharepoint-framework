@@ -31,6 +31,21 @@ Short summary on functionality and used technologies.
 
 1. Remove `/workspaces/try-sharepoint-framework/minica.crt` .
 
+### Set developers' tenant domain
+
+1. Create `.devcontainer/.env` .
+
+1. Set `SPFX_SERVE_TENANT_DOMAIN` .
+
+    ```dotenv
+    SPFX_SERVE_TENANT_DOMAIN=**YOUR TENANT DOMAIN**
+    ```
+
+    cf. [Exercise - Testing with the hosted SharePoint Workbench](https://learn.microsoft.com/en-us/training/modules/sharepoint-spfx-web-parts/5-exercise-test-workbench)  
+    The different modes of the gulp serve task
+
+    > The {tenantDomain} string is replaced automatically by the gulp serve task using an environment variable on your workstation. Set the environment variable SPFX_SERVE_TENANT_DOMAIN to the domain of your hosted SharePoint Online site you want to use for testing.
+
 ## Solution
 
 | Solution    | Author(s)                                               |
