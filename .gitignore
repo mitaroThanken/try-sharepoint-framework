@@ -32,3 +32,8 @@ obj
 
 # Styles Generated Code
 *.scss.ts
+
+# dev certificates
+*.crt
+*.key
+*.pem
