@@ -4,6 +4,7 @@
 	"name": "SPFx",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "ghcr.io/mitarothanken/try-sharepoint-framework/devcontainers/spfx:20240323-1545",
+	"runArgs": ["--env-file", ".devcontainer/.env"],
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},

@@ -37,3 +37,6 @@ obj
 *.crt
 *.key
 *.pem
+
+# .env
+.env

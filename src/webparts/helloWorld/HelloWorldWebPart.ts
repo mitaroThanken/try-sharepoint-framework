@@ -20,6 +20,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
   private _environmentMessage: string = '';
 
   public render(): void {
+    const siteTitle : string = this.context.pageContext.web.title;
     this.domElement.innerHTML = `
     <section class="${styles.helloWorld} ${!!this.context.sdks.microsoftTeams ? styles.teams : ''}">
       <div class="${styles.welcome}">
@@ -27,6 +28,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
         <h2>Well done, ${escape(this.context.pageContext.user.displayName)}!</h2>
         <div>${this._environmentMessage}</div>
         <div>Web part property value: <strong>${escape(this.properties.description)}</strong></div>
+        <div>Site title: <strong>${escape(siteTitle)}</strong></div>
       </div>
       <div>
         <h3>Welcome to SharePoint Framework!</h3>
