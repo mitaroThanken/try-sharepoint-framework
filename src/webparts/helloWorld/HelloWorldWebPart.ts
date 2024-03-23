@@ -1,4 +1,4 @@
-import { Version } from '@microsoft/sp-core-library';
+import { Version, DisplayMode, Environment, EnvironmentType, Log } from '@microsoft/sp-core-library';
 import {
   type IPropertyPaneConfiguration,
   PropertyPaneTextField
@@ -20,8 +20,17 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
   private _environmentMessage: string = '';
 
   public render(): void {
-    const siteTitle : string = this.context.pageContext.web.title;
-    this.domElement.innerHTML = `
+    const pageMode: string = (this.displayMode === DisplayMode.Edit)
+      ? 'You are in edit mode'
+      : 'You are in read mode';
+    const environmentType: string = (Environment.type === EnvironmentType.ClassicSharePoint)
+      ? 'You are running in a classic page'
+      : 'You are running in a modern page';
+    const siteTitle: string = this.context.pageContext.web.title;
+    this.context.statusRenderer.displayLoadingIndicator(this.domElement, "message");
+    setTimeout(() => {
+      this.context.statusRenderer.clearLoadingIndicator(this.domElement);
+      this.domElement.innerHTML = `
     <section class="${styles.helloWorld} ${!!this.context.sdks.microsoftTeams ? styles.teams : ''}">
       <div class="${styles.welcome}">
         <img alt="" src="${this._isDarkTheme ? require('./assets/welcome-dark.png') : require('./assets/welcome-light.png')}" class="${styles.welcomeImage}" />
@@ -29,6 +38,8 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
         <div>${this._environmentMessage}</div>
         <div>Web part property value: <strong>${escape(this.properties.description)}</strong></div>
         <div>Site title: <strong>${escape(siteTitle)}</strong></div>
+        <div>Page mode: <strong>${escape(pageMode)}</strong></div>
+        <div>Environment: <strong>${escape(environmentType)}</strong></div>
       </div>
       <div>
         <h3>Welcome to SharePoint Framework!</h3>
@@ -39,11 +50,17 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
       </div>
     </section>`;
 
-    this.domElement.getElementsByTagName("button")[0]
-      .addEventListener('click', (event: MouseEvent) => {
-        event.preventDefault();
-        alert('Welcome to the SharePoint Framework!');
-      });
+      this.domElement.getElementsByTagName("button")[0]
+        .addEventListener('click', (event: MouseEvent) => {
+          event.preventDefault();
+          alert('Welcome to the SharePoint Framework!');
+        });
+    }, 5000);
+
+    Log.info('HelloWorld', 'message', this.context.serviceScope);
+    Log.warn('HelloWorld', 'WARNING message', this.context.serviceScope);
+    Log.error('HelloWorld', new Error('Error message'), this.context.serviceScope);
+    Log.verbose('HelloWorld', 'VERBOSE message', this.context.serviceScope);
   }
 
   protected onInit(): Promise<void> {
