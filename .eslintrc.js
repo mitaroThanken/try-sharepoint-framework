@@ -347,6 +347,12 @@ module.exports = {
         '**/test/*.tsx'
       ],
       rules: {}
+    },
+    {
+      files: [".eslintrc.js"],
+      env: {
+        node: true,
+      }
     }
   ]
 };
