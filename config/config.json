@@ -40,6 +40,7 @@
     "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js",
     "HelloWorldReactWebPartStrings": "lib/webparts/helloWorldReact/loc/{locale}.js",
     "HelloPropertyPaneWebPartStrings": "lib/webparts/helloPropertyPane/loc/{locale}.js",
-    "HelloPnPControlsWebPartStrings": "lib/webparts/helloPnPControls/loc/{locale}.js"
+    "HelloPnPControlsWebPartStrings": "lib/webparts/helloPnPControls/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
   }
 }
