@@ -25,12 +25,21 @@
           "manifest": "./src/webparts/helloPropertyPane/HelloPropertyPaneWebPart.manifest.json"
         }
       ]
+    },
+    "hello-pn-p-controls-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/helloPnPControls/HelloPnPControlsWebPart.js",
+          "manifest": "./src/webparts/helloPnPControls/HelloPnPControlsWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
     "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js",
     "HelloWorldReactWebPartStrings": "lib/webparts/helloWorldReact/loc/{locale}.js",
-    "HelloPropertyPaneWebPartStrings": "lib/webparts/helloPropertyPane/loc/{locale}.js"
+    "HelloPropertyPaneWebPartStrings": "lib/webparts/helloPropertyPane/loc/{locale}.js",
+    "HelloPnPControlsWebPartStrings": "lib/webparts/helloPnPControls/loc/{locale}.js"
   }
 }
