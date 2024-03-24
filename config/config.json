@@ -17,11 +17,20 @@
           "manifest": "./src/webparts/helloWorldReact/HelloWorldReactWebPart.manifest.json"
         }
       ]
+    },
+    "hello-property-pane-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/helloPropertyPane/HelloPropertyPaneWebPart.js",
+          "manifest": "./src/webparts/helloPropertyPane/HelloPropertyPaneWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
     "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js",
-    "HelloWorldReactWebPartStrings": "lib/webparts/helloWorldReact/loc/{locale}.js"
+    "HelloWorldReactWebPartStrings": "lib/webparts/helloWorldReact/loc/{locale}.js",
+    "HelloPropertyPaneWebPartStrings": "lib/webparts/helloPropertyPane/loc/{locale}.js"
   }
 }
