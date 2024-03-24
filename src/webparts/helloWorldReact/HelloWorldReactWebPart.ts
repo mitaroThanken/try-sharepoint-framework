@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
+import { Environment, Version } from '@microsoft/sp-core-library';
 import {
   type IPropertyPaneConfiguration,
   PropertyPaneTextField
@@ -9,8 +9,11 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 import * as strings from 'HelloWorldReactWebPartStrings';
-import HelloWorldReact from './components/HelloWorldReact';
-import { IHelloWorldReactProps } from './components/IHelloWorldReactProps';
+
+const HelloWorldReact = React.lazy(() => import(
+  /* webpackChunkName: 'HelloWorldReact' */
+  './components/HelloWorldReact'
+));
 
 export interface IHelloWorldReactWebPartProps {
   description: string;
@@ -22,15 +25,28 @@ export default class HelloWorldReactWebPart extends BaseClientSideWebPart<IHello
   private _environmentMessage: string = '';
 
   public render(): void {
-    const element: React.ReactElement<IHelloWorldReactProps> = React.createElement(
-      HelloWorldReact,
-      {
-        description: this.properties.description,
-        isDarkTheme: this._isDarkTheme,
-        environmentMessage: this._environmentMessage,
-        hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName
-      }
+    const element = React.createElement(
+      React.StrictMode,
+      null,
+      React.createElement(
+        React.Suspense,
+        {
+          fallback: React.createElement("p", null, "Loading..."),
+        },
+        React.createElement(
+          HelloWorldReact,
+          {
+            description: this.properties.description,
+            isDarkTheme: this._isDarkTheme,
+            environmentMessage: this._environmentMessage,
+            hasTeamsContext: !!this.context.sdks.microsoftTeams,
+            userDisplayName: this.context.pageContext.user.displayName,
+            displayMode: this.displayMode,
+            environment: Environment.type,
+            siteTitle: this.context.pageContext.web.title,
+          }
+        )
+      )
     );
 
     ReactDom.render(element, this.domElement);
